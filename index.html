@@ -10,164 +10,155 @@
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 로그인 화면 -->
-    <div id="loginScreen" class="screen active">
-        <div class="login-container">
-            <div class="login-background">
-                <div class="punch-hero">
-                    <img src="punch.png" alt="뚝배기" class="punch-image">
+    <div id="app">
+        <!-- 로그인 화면 -->
+        <div id="loginScreen" class="screen active">
+            <div class="login-container">
+                <h1 class="game-title">뚝배기 팡팡!<br>스트레스 팡팡!</h1>
+                <div class="login-form">
+                    <input type="text" id="username" placeholder="사용자 이름을 입력하세요" maxlength="10">
+                    <button id="loginBtn" class="btn-primary">게임 시작</button>
                 </div>
-            </div>
-            <div class="login-form">
-                <h1>뚝배기 팡팡!<br>스트레스 팡팡!</h1>
-                <div class="input-group">
-                    <input type="text" id="username" placeholder="이름을 입력하세요" maxlength="10">
-                </div>
-                <div class="input-group">
-                    <input type="password" id="password" placeholder="비밀번호 (4자리 숫자)" maxlength="4" pattern="[0-9]{4}">
-                </div>
-                <button id="loginBtn" class="btn-primary">로그인</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 메인 메뉴 화면 -->
-    <div id="mainMenu" class="screen">
-        <div class="menu-container">
-            <div class="user-info">
-                <h2>안녕하세요, <span id="userDisplayName"></span>님!</h2>
                 <div class="coin-info">
-                    <span class="coin-icon">🪙</span>
-                    <span id="coinCount">0</span>개
+                    <span>보유 코인: <span id="loginCoins">0</span>개</span>
+                </div>
+                <button id="requestCoinBtn" class="btn-secondary">코인 요청</button>
+            </div>
+        </div>
+
+        <!-- 게임 화면 -->
+        <div id="gameScreen" class="screen">
+            <div class="game-header">
+                <div class="game-info">
+                    <div class="score">점수: <span id="score">0</span>점</div>
+                    <div class="timer">시간: <span id="timer">30.00</span>초</div>
+                    <div class="coins">코인: <span id="gameCoins">0</span>개</div>
                 </div>
             </div>
-            
-            <div class="menu-buttons">
-                <button id="playGameBtn" class="btn-game">게임 시작</button>
-                <button id="requestCoinBtn" class="btn-secondary">코인 요청</button>
-                <button id="logoutBtn" class="btn-secondary">로그아웃</button>
-            </div>
-        </div>
-    </div>
 
-    <!-- 게임 화면 -->
-    <div id="gameScreen" class="screen">
-        <div class="game-header">
-            <div class="game-info">
-                <div class="score">점수: <span id="currentScore">0</span>점</div>
-                <div class="timer">시간: <span id="timeLeft">30.00</span>초</div>
-                <div class="coin-display">🪙 <span id="gameCoinCount">0</span>개</div>
-            </div>
-            <button id="pauseBtn" class="btn-pause">⏸️</button>
-        </div>
-
-        <div class="game-board">
-            <div class="stove-container">
+            <div class="game-board">
                 <div class="stove">
-                    <div class="stove-top"></div>
-                    <div class="burner-grid">
+                    <div class="burner-row">
                         <div class="burner" data-index="0">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="1">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="2">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="burner-row">
                         <div class="burner" data-index="3">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="4">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="5">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
+                    </div>
+                    <div class="burner-row">
                         <div class="burner" data-index="6">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="7">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                         <div class="burner" data-index="8">
-                            <div class="burner-ring"></div>
-                            <div class="punch"></div>
+                            <div class="pot-container">
+                                <div class="pot normal-pot" style="display: none;"></div>
+                                <div class="pot golden-pot" style="display: none;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="ranking-dashboard">
-            <h3>🏆 랭킹</h3>
-            <div id="rankingList" class="ranking-list">
-                <!-- 랭킹 데이터가 여기에 동적으로 추가됩니다 -->
+            <div class="game-controls">
+                <button id="startGameBtn" class="btn-primary">게임 시작</button>
+                <button id="backToLoginBtn" class="btn-secondary">메인으로</button>
+            </div>
+
+            <!-- 랭킹 대시보드 -->
+            <div class="ranking-dashboard">
+                <h3>🏆 랭킹</h3>
+                <div class="ranking-list" id="rankingList">
+                    <!-- 랭킹 데이터가 여기에 동적으로 추가됩니다 -->
+                </div>
             </div>
         </div>
 
-        <button id="backToMenuBtn" class="btn-back">메뉴로 돌아가기</button>
+        <!-- 코인 요청 팝업 -->
+        <div id="coinRequestPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h3>코인 요청</h3>
+                <input type="text" id="requestTargetUser" placeholder="요청할 사용자 이름">
+                <textarea id="requestMessage" placeholder="메시지를 입력하세요"></textarea>
+                <div class="popup-buttons">
+                    <button id="sendRequestBtn" class="btn-primary">요청 보내기</button>
+                    <button id="cancelRequestBtn" class="btn-secondary">취소</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 코인 요청 수락 팝업 -->
+        <div id="coinRequestAcceptPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h3>코인 요청</h3>
+                <div id="requestInfo"></div>
+                <div class="popup-buttons">
+                    <button id="acceptRequestBtn" class="btn-primary">수락</button>
+                    <button id="rejectRequestBtn" class="btn-secondary">거부</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 게임 오버 팝업 -->
+        <div id="gameOverPopup" class="popup" style="display: none;">
+            <div class="popup-content">
+                <h3>게임 종료!</h3>
+                <div class="game-result">
+                    <p>최종 점수: <span id="finalScore">0</span>점</p>
+                    <p>황금뚝배기: <span id="goldenPots">0</span>개</p>
+                </div>
+                <div class="popup-buttons">
+                    <button id="playAgainBtn" class="btn-primary">다시 플레이</button>
+                    <button id="backToMainBtn" class="btn-secondary">메인으로</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 파티클 효과 컨테이너 -->
+        <div id="particleContainer"></div>
     </div>
 
-    <!-- 게임 종료 화면 -->
-    <div id="gameOverScreen" class="screen">
-        <div class="game-over-container">
-            <h2>게임 종료!</h2>
-            <div class="final-score">
-                <p>최종 점수: <span id="finalScore">0</span>점</p>
-                <p>황금뚝배기: <span id="goldenPunches">0</span>개</p>
-            </div>
-            <div class="game-over-buttons">
-                <button id="playAgainBtn" class="btn-primary">다시하기</button>
-                <button id="backToMenuFromGameOverBtn" class="btn-secondary">메뉴로</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 코인 요청 모달 -->
-    <div id="coinRequestModal" class="modal">
-        <div class="modal-content">
-            <h3>코인 요청</h3>
-            <div class="input-group">
-                <input type="text" id="requestTargetUser" placeholder="받는 사람 이름">
-            </div>
-            <div class="input-group">
-                <textarea id="requestMessage" placeholder="메시지를 입력하세요" rows="3"></textarea>
-            </div>
-            <div class="modal-buttons">
-                <button id="sendRequestBtn" class="btn-primary">요청 보내기</button>
-                <button id="cancelRequestBtn" class="btn-secondary">취소</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 코인 요청 알림 모달 -->
-    <div id="coinRequestNotificationModal" class="modal">
-        <div class="modal-content">
-            <h3>코인 요청</h3>
-            <div class="request-info">
-                <p><strong id="requestFromUser"></strong>님이 코인을 요청했습니다.</p>
-                <p id="requestMessageText"></p>
-            </div>
-            <div class="modal-buttons">
-                <button id="acceptRequestBtn" class="btn-primary">수락</button>
-                <button id="rejectRequestBtn" class="btn-secondary">거부</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 효과음 -->
-    <audio id="hitSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" preload="auto"></audio>
-    <audio id="goldenHitSound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" preload="auto"></audio>
-
-    <script src="script.js?v=3"></script>
+    <script src="script.js"></script>
 </body>
 </html> 
